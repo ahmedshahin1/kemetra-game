@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { supabase } from '../../services/supabase/client';
+import { supabase, isSupabaseConfigured } from '../../services/supabase/client';
 import { ensureProfileExists } from '../../services/supabase/database';
 import { Lock, Mail, Loader2, Sparkles, X, CheckCircle2, Eye, EyeOff, AlertCircle } from 'lucide-react';
 
@@ -65,9 +65,12 @@ const AuthModal = ({ isOpen, onClose, onAuthSuccess }) => {
 
     const switchMode = (m) => { setMode(m); setError(null); };
 
+    const NOT_CONFIGURED_ERROR = { text: 'The app is not connected to a database yet.', hint: 'The site owner needs to set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in the hosting provider\'s environment variables and redeploy.' };
+
     // ── Login ──────────────────────────────────────────────────────
     const handleLogin = async (e) => {
         e.preventDefault();
+        if (!isSupabaseConfigured) { setError(NOT_CONFIGURED_ERROR); return; }
         setLoading(true);
         setError(null);
         try {
@@ -90,6 +93,7 @@ const AuthModal = ({ isOpen, onClose, onAuthSuccess }) => {
     // ── Sign Up ────────────────────────────────────────────────────
     const handleSignUp = async (e) => {
         e.preventDefault();
+        if (!isSupabaseConfigured) { setError(NOT_CONFIGURED_ERROR); return; }
         if (password.length < 6) {
             setError({ text: 'Password must be at least 6 characters.', hint: null });
             return;
@@ -123,6 +127,7 @@ const AuthModal = ({ isOpen, onClose, onAuthSuccess }) => {
 
     // ── Guest ──────────────────────────────────────────────────────
     const handleGuest = async () => {
+        if (!isSupabaseConfigured) { setError(NOT_CONFIGURED_ERROR); return; }
         setLoading(true);
         setError(null);
         try {
