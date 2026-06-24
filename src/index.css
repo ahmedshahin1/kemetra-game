@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background-color: #0A0A14;
+  color: #F5DEB3;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .font-egyptian {
+  font-family: 'Cinzel', serif;
+}
+
+/* Custom Egyptian UI Elements */
+.egypt-panel {
+  @apply bg-egypt-night-light/80 border-2 border-egypt-gold rounded-lg backdrop-blur-md shadow-[0_0_15px_rgba(212,175,55,0.3)];
+}
+
+.egypt-button {
+  @apply relative px-8 py-3 bg-egypt-gold text-egypt-night font-egyptian font-bold uppercase tracking-widest transition-all duration-300 hover:bg-egypt-gold-light hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+}
+
+.egypt-card {
+  @apply bg-egypt-papyrus text-egypt-night p-6 rounded-sm shadow-xl border-l-4 border-egypt-gold font-modern;
+}
+
+.glow-text {
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0A14;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #F9E076;
+}
