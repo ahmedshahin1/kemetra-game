@@ -9,6 +9,7 @@ import SettingsScene from './scenes/SettingsScene/SettingsScene';
 import AchievementsScene from './scenes/AchievementsScene/AchievementsScene';
 import { LanguageProvider } from './context/LanguageContext';
 import { AudioProvider } from './context/AudioContext';
+import MuteButton from './components/ui/MuteButton';
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
             <AudioProvider>
                 <Router>
                     <div className="relative w-full h-screen bg-egypt-night overflow-hidden">
+                        <MuteButton />
                         <Routes>
                             <Route path="/" element={<MainMenu />} />
                             <Route path="/globe" element={<GlobeScene />} />

@@ -372,7 +372,7 @@ const GlobeScene = () => {
                 </div>
 
                 {/* Right: Legend toggle (mobile) + progress (sm+) */}
-                <div className="flex items-center gap-2 flex-shrink-0">
+                <div className="flex items-center gap-2 flex-shrink-0 mr-12 sm:mr-14">
                     {/* Unlocked counter (sm+) */}
                     <div className="hidden sm:flex items-center gap-2 bg-egypt-night-light/70 border border-egypt-gold/20 px-3 py-1.5 rounded-full backdrop-blur-md">
                         <div className="w-2 h-2 rounded-full bg-egypt-gold" />

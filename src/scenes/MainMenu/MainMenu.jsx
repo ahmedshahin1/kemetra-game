@@ -191,7 +191,7 @@ const MainMenu = () => {
             {/* ── User badge (top-right) ─────────────────── */}
             <AnimatePresence>
                 {user && (
-                    <motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} className="absolute top-4 right-4 z-30 flex items-center gap-2">
+                    <motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} className="absolute top-3 right-16 sm:top-4 sm:right-20 z-30 flex items-center gap-2">
                         <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-egypt-gold/20 max-w-[160px] sm:max-w-none" style={{ background: 'rgba(10,10,20,0.7)', backdropFilter: 'blur(12px)' }}>
                             <div className="w-6 h-6 rounded-full bg-egypt-gold/10 border border-egypt-gold/30 flex items-center justify-center flex-shrink-0">
                                 <UserIcon className="w-3 h-3 text-egypt-gold" />

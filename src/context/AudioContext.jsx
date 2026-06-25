@@ -11,6 +11,10 @@ export const AudioProvider = ({ children }) => {
         const saved = localStorage.getItem('kemetra_sounds');
         return saved !== null ? JSON.parse(saved) : true;
     });
+    const [isMuted, setIsMuted] = useState(() => {
+        const saved = localStorage.getItem('kemetra_muted');
+        return saved !== null ? JSON.parse(saved) : false;
+    });
 
     const musicRef = useRef(null);
 
@@ -20,7 +24,7 @@ export const AudioProvider = ({ children }) => {
         musicRef.current.loop = true;
         musicRef.current.volume = 0.4;
 
-        if (isMusicEnabled) {
+        if (isMusicEnabled && !isMuted) {
             // Browsers often block auto-play without user interaction
             const playMusic = () => {
                 musicRef.current.play().catch(e => console.log("Autoplay prevented:", e));
@@ -40,25 +44,31 @@ export const AudioProvider = ({ children }) => {
     useEffect(() => {
         if (!musicRef.current) return;
 
-        if (isMusicEnabled) {
+        if (isMusicEnabled && !isMuted) {
             musicRef.current.play().catch(e => console.log("Playback error:", e));
         } else {
             musicRef.current.pause();
         }
         localStorage.setItem('kemetra_music', JSON.stringify(isMusicEnabled));
-    }, [isMusicEnabled]);
+    }, [isMusicEnabled, isMuted]);
 
     useEffect(() => {
         localStorage.setItem('kemetra_sounds', JSON.stringify(isSoundEnabled));
     }, [isSoundEnabled]);
 
+    useEffect(() => {
+        localStorage.setItem('kemetra_muted', JSON.stringify(isMuted));
+    }, [isMuted]);
+
     const playSound = (soundType) => {
-        if (!isSoundEnabled) return;
+        if (!isSoundEnabled || isMuted) return;
 
         const audio = new Audio(`/audio/${soundType}.mp3`);
         audio.volume = 0.6;
         audio.play().catch(e => console.log("Sound effect error:", e));
     };
+
+    const toggleMute = () => setIsMuted(prev => !prev);
 
     return (
         <AudioContext.Provider value={{
@@ -66,6 +76,8 @@ export const AudioProvider = ({ children }) => {
             setIsMusicEnabled,
             isSoundEnabled,
             setIsSoundEnabled,
+            isMuted,
+            toggleMute,
             playSound
         }}>
             {children}

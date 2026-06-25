@@ -180,7 +180,7 @@ const QuizScene = () => {
                     </div>
                 </div>
 
-                <div className="text-egypt-gold/60 font-egyptian tracking-widest uppercase text-[10px] sm:text-sm">
+                <div className="text-egypt-gold/60 font-egyptian tracking-widest uppercase text-[10px] sm:text-sm mr-10 sm:mr-12">
                     {currentQuestion + 1}/{questions.length}
                 </div>
             </div>

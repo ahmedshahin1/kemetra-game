@@ -70,7 +70,7 @@ const SettingsScene = () => {
                             <div className="h-0.5 w-full bg-gradient-to-r from-egypt-gold to-transparent mt-1.5" />
                         </div>
                     </div>
-                    <Settings className="w-8 h-8 sm:w-10 sm:h-10 text-egypt-gold/15 flex-shrink-0 mt-1" style={{ animation: 'spin 10s linear infinite' }} />
+                    <Settings className="w-8 h-8 sm:w-10 sm:h-10 text-egypt-gold/15 flex-shrink-0 mt-1 mr-10 sm:mr-12" style={{ animation: 'spin 10s linear infinite' }} />
                 </motion.div>
 
                 {/* ── Panel ───────────────────────────────── */}
