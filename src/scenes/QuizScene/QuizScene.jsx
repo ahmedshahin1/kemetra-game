@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Timer, Trophy, ArrowRight, RefreshCw, X, CheckCircle2, AlertCircle, Loader2, Sparkles, ArrowLeft } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { signInAnonymously, saveGameScore } from '../../services/supabase/database';
+import { saveGameScore } from '../../services/supabase/database';
 import { supabase } from '../../services/supabase/client';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTranslation } from '../../data/translations';

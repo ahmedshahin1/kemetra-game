@@ -15,6 +15,10 @@ function friendlyError(err) {
         return { text: 'An account with this email already exists.', hint: 'Switch to Log In below.' };
     if (msg.includes('password should be at least') || msg.includes('password is too short'))
         return { text: 'Password must be at least 6 characters.', hint: null };
+    if (msg.includes('email rate limit'))
+        return { text: 'The email service is temporarily rate-limited.', hint: 'This is a project-wide limit, not specific to your email. Try again in a few minutes, or continue as guest for now.' };
+    if (msg.includes('email_address_invalid') || msg.includes('invalid format'))
+        return { text: 'That doesn\'t look like a valid email address.', hint: 'Please double-check it and try again.' };
     if (msg.includes('rate limit') || msg.includes('too many'))
         return { text: 'Too many attempts. Please wait a moment and try again.', hint: null };
     if (msg.includes('network') || msg.includes('fetch'))

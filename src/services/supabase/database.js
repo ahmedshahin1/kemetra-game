@@ -231,12 +231,3 @@ export const getLeaderboard = async (limit = 10) => {
         return DUMMY_LEADERBOARD.slice(0, limit);
     }
 };
-
-/**
- * Anonymous Login for quick play
- */
-export const signInAnonymously = async () => {
-    const { data, error } = await supabase.auth.signInAnonymously();
-    if (error) throw error;
-    return data;
-};
